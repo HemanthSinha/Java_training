@@ -35,6 +35,20 @@ class Employee {
         System.out.println("Department: " + dept);
         System.out.println("Password: " + "[" + new String(password) + "]");
     }
+    
+    public void firstPassword() {
+    	String upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
+    	String lowerCase = "abcdefghijklmnopqrstuvwxyz";
+    	String digits = "0123456789";
+    	String specialChars = "!@#$%^&*-_+,./\"\\?';:`~";
+    	String chars = upperCase + lowerCase + digits + specialChars;
+        Random r = new Random();
+        for (int i = 0; i < 8; i++) {
+            password[i] = chars.charAt(r.nextInt(chars.length()));
+        }
+        String randomFirstPassword = new String(password);
+        System.out.println("Randomly generated password: " + "["+ randomFirstPassword + "]");
+    }
 
     public void generatePassword() {
     	String upperCase = "ABCDEFGHIJKLMNOPQRSTUVWXYZ";
@@ -111,7 +125,7 @@ public class LoginCredentials {
         Employee e1 = new Employee(firstName, lastName);
         e1.SelectDept();
         e1.generateEmail();
-        e1.generatePassword();
+        e1.firstPassword();
         e1.ShowCredentials();
         System.out.println("Do you want to reset Password:(Yes/No)");
         String ch = s.next();
